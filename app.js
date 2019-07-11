@@ -16,6 +16,26 @@ app.get('/api/todos', (req, res) => {
   })
 });
 
+//create an endpoint to get a single todo from the database
+app.get('/api/todos/:id', (req, res) => {
+	const id = parseInt(req.params.id, 10);
+	dataArray.map((todo) => {
+		if (todo.id === id) {
+		return res.status(200).send({
+			success: 'true',
+			message: 'todo retrieved successfully',
+			todo,
+		});
+		} 
+	});
+	return res.status(404).send({
+		success: 'false',
+		message: 'todo does not exist',
+	});
+	});
+
+
+
 app.post('/api/todos', (req, res) => {
 	const todo = {
 	  id: dataArray.length + 1,
@@ -41,9 +61,31 @@ app.post('/api/todos', (req, res) => {
 	  message: 'todo added successfully',
 	  todo: todo
 	})
- });
+});
+app.delete('/api/todos/:id', (req, res) => {
+	const id = parseInt(req.params.id, 10);
+	
+	dataArray.map((todo, index) => {
+		if (todo.id === id) {
+			dataArray.splice(index, 1);
+			return res.status(200).send({
+			success: 'true',
+			message: 'Todo deleted successfuly',
+			});
+		}
+	});	
+		return res.status(404).send({
+		success: 'false',
+		message: 'todo not found',
+		});
+	
+	
+	});
+
 
 const PORT = 6969;
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`)
 });
+
+
