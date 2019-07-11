@@ -22,6 +22,19 @@ app.post('/api/todos', (req, res) => {
 	  title: req.body.title,
 	  description: req.body.description
 	}
+	//validate that user inputs both title and description
+	//if not, returns this error without pushing input to db
+	if (!req.body.title) {
+        return res.status(400).send({
+        success: 'false',
+        message: 'title is required'
+        });
+    } else if(!req.body.description) {
+        return res.status(400).send({
+        success: 'false',
+        message: 'description is required'
+        });
+    }
 	dataArray.push(todo);
 	return res.status(201).send({
 	  success: 'true',
