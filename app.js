@@ -62,6 +62,55 @@ app.post('/api/todos', (req, res) => {
 	  todo: todo
 	})
 });
+
+
+app.put('/api/todos/:id', (req, res) => {
+	const id = parseInt(req.params.id, 10);
+	let todoFound;
+	let itemIndex;
+	dataArray.map((todo, index) => {
+		if (todo.id === id) {
+		todoFound = todo;
+		itemIndex = index;
+		}
+	});
+
+	if (!todoFound) {
+		return res.status(404).send({
+		success: 'false',
+		message: 'todo not found',
+		});
+	}
+
+	if (!req.body.title) {
+		return res.status(400).send({
+		success: 'false',
+		message: 'title is required',
+		});
+	} else if (!req.body.description) {
+		return res.status(400).send({
+		success: 'false',
+		message: 'description is required',
+		});
+	}
+
+	const updatedTodo = {
+		id: todoFound.id,
+		title: req.body.title || todoFound.title,
+		description: req.body.description || todoFound.description,
+};
+//splice removes 1 item at the itemIndex, and swap with new item
+dataArray.splice(itemIndex, 1, updatedTodo);
+
+return res.status(201).send({
+	success: 'true',
+	message: 'todo added successfully',
+	updatedTodo,
+});
+});
+
+
+
 app.delete('/api/todos/:id', (req, res) => {
 	const id = parseInt(req.params.id, 10);
 	
