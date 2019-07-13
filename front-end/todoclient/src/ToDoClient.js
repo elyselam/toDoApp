@@ -8,7 +8,7 @@ function ToDoClient() {
   //useState is a func that returns an array of funcs
   const [todos, setTodos] = useState([]);
 
-  //the trigger
+  //the trigger, callback function for after the component renders html
   useEffect(() => {
     fetchTodos().then ( (resp)=> {
       debugger
@@ -21,11 +21,11 @@ function ToDoClient() {
     </div>
   );
 }
-
+//helper function to fetch from backend
 export const fetchTodos = () => {
-  const apiUrl = `http://localhost:6969/api/todos`;
+  const apiUrl = 'http://localhost:6969/api/todos';
   return fetch(apiUrl)
-      .then( (response => response.json());
+    .then( (response) => response.json())
 };
 
 export default ToDoClient;
