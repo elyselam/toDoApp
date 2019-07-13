@@ -1,8 +1,13 @@
 import express from 'express';
 import dataArray from './db/db';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const app = express();
+
+//sets up cors
+app.use(cors());
+
 // Parse incoming requests data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
