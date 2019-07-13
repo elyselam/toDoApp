@@ -10,8 +10,12 @@ function ToDoClient() {
 
   //the trigger, callback function for after the component renders html
   useEffect(() => {
+    //returns the response.json() as resp
     fetchTodos().then ( (resp)=> {
-      debugger
+      //extract todos in resp obj
+      let todos = resp.todos
+      //set state
+      setTodos(todos)
     })
   }, []);
 
