@@ -5,6 +5,7 @@ import {useState, useEffect} from 'react';
 import ToDoIndex from './ToDoIndex'
 import ToDoForm from './ToDoForm'
 
+//talk to backend and get todos
 function ToDoClient() {
   //set up 'todos' default empty array 
   //setTodos: setter for todos
