@@ -9,6 +9,7 @@ function ToDoClient() {
   //set up 'todos' default empty array 
   //setTodos: setter for todos
   //useState is a func that returns an array of funcs
+  //'todos' come from the db through express
   const [todos, setTodos] = useState([]);
 
   //the trigger, callback function for after the component renders html
@@ -21,13 +22,14 @@ function ToDoClient() {
       setTodos(todos)
     })
   }, []);
-
+  
+//this portion displays html with data gathered from ToDoClient 
   return (
     <div className="ToDoClient">
       {/* name of property to be sent to child*/}
-      <ToDoIndex fakeTodos={todos} />
       <ToDoForm />
-      </div>
+      <ToDoIndex fakeTodos={todos} />
+    </div>
   );
 }
 
