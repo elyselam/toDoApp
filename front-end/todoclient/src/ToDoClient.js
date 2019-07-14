@@ -2,6 +2,8 @@ import React from 'react';
 //set up state and when to trigger it
 import {useState, useEffect} from 'react';
 
+import ToDoIndex from './ToDoIndex'
+
 function ToDoClient() {
   //set up 'todos' default empty array 
   //setTodos: setter for todos
@@ -21,7 +23,8 @@ function ToDoClient() {
 
   return (
     <div className="ToDoClient">
-      buy more leggings
+      {/* name of property to be sent to child*/}
+      <ToDoIndex fakeTodos={todos} />
     </div>
   );
 }
