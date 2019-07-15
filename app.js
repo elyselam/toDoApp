@@ -137,7 +137,7 @@ app.delete('/api/todos/:id', (req, res) => {
 	});
 
 
-const PORT = 6969;
+const PORT = process.env.PORT || 6969;
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`)
 });
