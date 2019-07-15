@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/.bin/babel-node app.js",
+    "start2": "node_modules/.bin/babel-node app.js",
     "nodemon": "node_modules/.bin/nodemon app.js --exec babel-node --",
-    "start2": "node server.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
